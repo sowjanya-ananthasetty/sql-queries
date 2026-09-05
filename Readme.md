@@ -14,12 +14,18 @@ This repository contains SQL practice exercises covering:
   - AVG()
   - MAX()
   - MIN()
+- Grant
+- Revoke
+- Commit
+- RollBack
+- Savepoint
 
 ## Tables
 
 1. Student
 2. Employee
 3. Product
+4. students
 
 ## Concepts Practiced
 
