@@ -240,3 +240,27 @@ SELECT company,
        COUNT(*) AS total_products
 FROM Product
 GROUP BY company;
+
+
+-- DCL commands
+
+use students;
+
+CREATE USER 'student1'@'localhost'
+IDENTIFIED BY 'Student@123';
+
+GRANT SELECT
+ON students.students
+TO 'student1'@'localhost';
+
+
+grant select, insert, update
+on students.students
+to 'student1'@'localhost';
+
+
+revoke update
+on students.students
+from 'student1'@'localhost';
+
+SHOW GRANTS FOR 'student1'@'localhost';
