@@ -264,3 +264,122 @@ on students.students
 from 'student1'@'localhost';
 
 SHOW GRANTS FOR 'student1'@'localhost';
+
+use students;
+
+select * from students;
+
+create view student as
+select name,marks from students;
+
+select * from student;
+
+create view top_marks as
+select id, name, marks from students
+where marks>90;
+
+select * from top_marks;
+
+
+show full tables
+where table_type='view';
+
+show create view top_marks;
+
+create or replace view top_marks as select id, name, marks from students;
+
+drop view top_marks;
+
+
+SHOW INDEX FROM students;
+
+
+create index idx_student_name
+on students(name);
+
+
+SHOW INDEX FROM students;
+
+
+
+
+INSERT INTO students VALUES
+(4, 'Robert', 70),
+(5, 'Diana', 65),
+(6, 'Michael', 92),
+(7, 'John', 79),
+(8, 'Sophia', 74),
+(9, 'Ashley', 81),
+(10, 'Julia', 88),
+(11, 'Belvet', 76);
+
+
+with student as (select * from students) select * from student;
+
+
+with high_marks as
+(select name from students where marks>75)
+select * from high_marks;
+
+with high_marks as
+(select name from students where marks>75
+order by name asc)
+select * from high_marks;
+
+
+with high_marks as
+(select name from students where marks>75
+order by right(name, 3) asc)
+select * from high_marks;
+
+
+with bonus as (select id, name, marks, marks+5 as bonus_marks from students) select * from bonus;
+
+
+CREATE TABLE student_scores (
+    id INT,
+    student_name VARCHAR(50),
+    subject VARCHAR(50),
+    marks INT
+);
+
+
+
+INSERT INTO student_scores (id, student_name, subject, marks)
+VALUES
+(1, 'Ravi', 'Math', 80),
+(1, 'Ravi', 'Science', 90),
+(1, 'Ravi', 'English', 85),
+
+(2, 'Priya', 'Math', 95),
+(2, 'Priya', 'Science', 85),
+(2, 'Priya', 'English', 90),
+
+(3, 'Arun', 'Math', 70),
+(3, 'Arun', 'Science', 75),
+(3, 'Arun', 'English', 80),
+
+(4, 'Kiran', 'Math', 88),
+(4, 'Kiran', 'Science', 92),
+(4, 'Kiran', 'English', 90);
+
+
+
+
+with student_avg as (select student_name,  round(avg(marks),2) as avg_marks from student_scores group by student_name) select * from student_avg;
+
+with student_avg as (select student_name,  round(avg(marks),2) as avg_marks from student_scores group by student_name) select * from student_avg where avg_marks>80;
+
+use employee;
+
+select * from employees order by salary desc;
+
+select max(salary) from employees
+where salary < (select max(salary) from employees where salary < (select max(salary) from employees));
+
+select * from employees order by salary desc;
+
+with ranked_salary as (select salary, dense_rank() over(order by salary desc) as salary_rank from employees) select * from ranked_salary;
+
+
+
