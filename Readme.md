@@ -19,6 +19,9 @@ This repository contains SQL practice exercises covering:
 - Commit
 - RollBack
 - Savepoint
+- Views
+- Indexes
+- CTEs
 
 ## Tables
 
