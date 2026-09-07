@@ -381,5 +381,30 @@ select * from employees order by salary desc;
 
 with ranked_salary as (select salary, dense_rank() over(order by salary desc) as salary_rank from employees) select * from ranked_salary;
 
+use students;
 
+select * from students;
+
+alter table students 
+add age Int;
+
+
+update students
+set age=20
+where id=11;
+
+update students 
+set age = case 
+             when id=3 then 21
+             when id=4 then 20
+             when id=5 then 20
+             when id=6 then 22
+             when id=7 then 19
+             when id=8 then 20
+             when id=9 then 21
+             when id=10 then 19
+End;
+
+
+with high_age as (select name, age from students where age>20) select * from high_age order by name asc;
 
