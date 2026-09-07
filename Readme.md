@@ -23,6 +23,7 @@ This repository contains SQL practice exercises covering:
 - Indexes
 - CTEs
 - Window Functions
+- Joins
 
 ## Tables
 
